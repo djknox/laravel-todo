@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <todo-list></todo-list>
                 </div>
             </div>
         </div>
