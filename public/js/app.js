@@ -1870,26 +1870,26 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       titleText: '',
-      projectText: '',
+      descriptionText: '',
       isCreating: false
     };
   },
   methods: {
     openForm: function openForm() {
       this.titleText = '';
-      this.projectText = '';
+      this.descriptionText = '';
       this.isCreating = true;
     },
     closeForm: function closeForm() {
       this.isCreating = false;
     },
     sendForm: function sendForm() {
-      if (this.titleText.length > 0 && this.projectText.length > 0) {
+      if (this.titleText.length > 0 && this.descriptionText.length > 0) {
         var title = this.titleText;
-        var project = this.projectText;
+        var description = this.descriptionText;
         this.$emit('add-todo', {
           title: title,
-          project: project,
+          description: description,
           done: false
         });
         this.newTodoText = '';
@@ -37390,23 +37390,23 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.projectText,
-                    expression: "projectText"
+                    value: _vm.descriptionText,
+                    expression: "descriptionText"
                   }
                 ],
-                ref: "project",
+                ref: "description",
                 attrs: {
                   type: "text",
                   defaultValue: "",
-                  placeholder: "Project"
+                  placeholder: "Description"
                 },
-                domProps: { value: _vm.projectText },
+                domProps: { value: _vm.descriptionText },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.projectText = $event.target.value
+                    _vm.descriptionText = $event.target.value
                   }
                 }
               })
@@ -37473,7 +37473,9 @@ var render = function() {
       [
         _c("div", [_vm._v("\n        " + _vm._s(_vm.todo.title) + "\n    ")]),
         _vm._v(" "),
-        _c("div", [_vm._v("\n        " + _vm._s(_vm.todo.project) + "\n    ")]),
+        _c("div", [
+          _vm._v("\n        " + _vm._s(_vm.todo.description) + "\n    ")
+        ]),
         _vm._v(" "),
         _c("div", [
           _c("span", { on: { click: _vm.showForm } }, [
@@ -37538,18 +37540,18 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.todo.project,
-                  expression: "todo.project"
+                  value: _vm.todo.description,
+                  expression: "todo.description"
                 }
               ],
-              attrs: { type: "text", placeholder: "Project" },
-              domProps: { value: _vm.todo.project },
+              attrs: { type: "text", placeholder: "Description" },
+              domProps: { value: _vm.todo.description },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.todo, "project", $event.target.value)
+                  _vm.$set(_vm.todo, "description", $event.target.value)
                 }
               }
             })
@@ -37572,7 +37574,7 @@ var render = function() {
             name: "show",
             rawName: "v-show",
             value: !_vm.isEditing && _vm.todo.done,
-            expression: "!isEditing &&todo.done"
+            expression: "!isEditing && todo.done"
           }
         ],
         attrs: { disabled: "" }

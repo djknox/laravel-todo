@@ -5,7 +5,7 @@
           {{ todo.title }}
       </div>
       <div>
-          {{ todo.project }}
+          {{ todo.description }}
       </div>
       <div>
             <span v-on:click="showForm">
@@ -22,7 +22,7 @@
           <input type='text' v-model="todo.title" placeholder="Title">
         </div>
         <div>
-          <input type='text' v-model="todo.project" placeholder="Project">
+          <input type='text' v-model="todo.description" placeholder="Description">
         </div>
         <div>
           <button v-on:click="hideForm">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div v-show="!isEditing &&todo.done" disabled>
+    <div v-show="!isEditing && todo.done" disabled>
         Completed
     </div>
     <div v-show="!isEditing && !todo.done" v-on:click="completeTodo(todo)">

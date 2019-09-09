@@ -10,7 +10,7 @@
             <input v-model="titleText" type='text' ref='title' defaultValue="" placeholder="Title">
           </div>
           <div>
-            <input v-model="projectText" type='text' ref='project' defaultValue="" placeholder="Project">
+            <input v-model="descriptionText" type='text' ref='description' defaultValue="" placeholder="Description">
           </div>
           <div>
             <button v-on:click="sendForm()">
@@ -31,26 +31,26 @@ export default {
   data() {
     return {
       titleText: '',
-      projectText: '',
+      descriptionText: '',
       isCreating: false,
     };
   },
   methods: {
     openForm() {
       this.titleText = '';
-      this.projectText = '';
+      this.descriptionText = '';
       this.isCreating = true;
     },
     closeForm() {
       this.isCreating = false;
     },
     sendForm() {
-      if (this.titleText.length > 0 && this.projectText.length > 0) {
+      if (this.titleText.length > 0 && this.descriptionText.length > 0) {
         const title = this.titleText;
-        const project = this.projectText;
+        const description = this.descriptionText;
         this.$emit('add-todo', {
           title,
-          project,
+          description,
           done: false,
         });
         this.newTodoText = '';
