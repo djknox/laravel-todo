@@ -2010,7 +2010,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.loadTodoItems();
   },
   data: function data() {
     return {
@@ -2018,6 +2018,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    loadTodoItems: function loadTodoItems() {
+      var _this = this;
+
+      window.axios.get('/todos').then(function (_ref) {
+        var data = _ref.data;
+        data.forEach(function (todo) {
+          _this.todos.push(todo);
+        });
+      });
+    },
     addTodo: function addTodo(todo) {
       this.todos.push(todo);
     },

@@ -22,7 +22,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+            this.loadTodoItems();
         },
         data() {
             return {
@@ -30,6 +30,13 @@
             }
         },
         methods: {
+            loadTodoItems() {
+                window.axios.get('/todos').then(({ data }) => {
+                    data.forEach(todo => {
+                        this.todos.push(todo);
+                    });
+                });
+            },
             addTodo(todo) {
                 this.todos.push(todo);
             },
@@ -40,7 +47,7 @@
             completeTodo(todo) {
                 const todoIndex = this.todos.indexOf(todo);
                 this.todos[todoIndex].done = true;
-            }
+            },
         },
     }
 </script>
