@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Todo;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,4 +38,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * A User can create many Todo items.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function todos(){
+        return $this->hasMany(Todo::class);
+    }
 }
